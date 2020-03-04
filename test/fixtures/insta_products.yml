@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  photo_string: MyString
+  title: MyString
+  description: MyString
+  material: MyString
+  color: MyString
+  length: MyString
+  width: MyString
+  stones: MyString
+  cut: MyString
+  stone_color: MyString
+  carat_weight: MyString
+  gram_weight: MyString
+  user: one
+
+two:
+  photo_string: MyString
+  title: MyString
+  description: MyString
+  material: MyString
+  color: MyString
+  length: MyString
+  width: MyString
+  stones: MyString
+  cut: MyString
+  stone_color: MyString
+  carat_weight: MyString
+  gram_weight: MyString
+  user: two

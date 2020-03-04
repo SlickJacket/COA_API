@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  specs: MyString
+  imgs: MyString
+  quote: MyString
+  order_number: MyString
+  complete: false
+  starred: false
+  client: one
+
+two:
+  title: MyString
+  specs: MyString
+  imgs: MyString
+  quote: MyString
+  order_number: MyString
+  complete: false
+  starred: false
+  client: two

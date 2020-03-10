@@ -1,0 +1,2 @@
+class YouVideosController < ApplicationController
+end

@@ -1,0 +1,2 @@
+class InstaProductsController < ApplicationController
+end

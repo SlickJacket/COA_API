@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::API
     def token
-        # byebug
+        byebug
         request.headers["Authorization"].split(" ")[1]
     end
     
     def secret
-        byebug
+        # byebug
         # Rails.application.credentials.dig(:jwt_secret)
-        Rails.application.credentials[Rails.env.to_sym][:jwt][:jwt_secret]
+        Rails.application.credentials[:jwt][:jwt_secret]
         # byebug
     end
     

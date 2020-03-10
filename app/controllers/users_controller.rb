@@ -19,14 +19,26 @@ class UsersController < ApplicationController
         # byebug
         if @user.valid?
           # byebug
-          @token = encode_token(user_id: @user.id)
-          byebug
-          render json: { user: @user, jwt: @token }, status: :created
+          # @token = encode_token(user_id: @user.id)
+          # byebug
+          # render json: { user: @user, jwt: @token }, status: :created
+          render json: {user: @user, token: create_token(@user.id)}
         else
-          byebug
-          render json: { error: 'failed to create user' }, status: :not_acceptable
+          # byebug
+          # render json: { error: 'failed to create user' }, status: :not_acceptable
+          render json: {errors: @user.errors.full_messages}, status: 422
         end
       end
+
+      # def create
+      #   user = User.create(user_params)
+    
+      #   if user.valid?
+      #     render json: {user: user, token: create_token(user.id)}
+      #   else
+      #     render json: {errors: user.errors.full_messages}, status: 422
+      #   end
+      # end
     
       def update
         if @user.update(user_params)

@@ -15,30 +15,18 @@ class UsersController < ApplicationController
       end
     
       def create
-        @user = User.create(user_params)
+        user = User.create(user_params)
         # byebug
-        if @user.valid?
-          # byebug
-          # @token = encode_token(user_id: @user.id)
+        if user.valid?
           # byebug
           # render json: { user: @user, jwt: @token }, status: :created
-          render json: {user: @user, token: create_token(@user.id)}
+          render json: {user: user, token: create_token(user.id)}
         else
           # byebug
           # render json: { error: 'failed to create user' }, status: :not_acceptable
-          render json: {errors: @user.errors.full_messages}, status: 422
+          render json: {errors: user.errors.full_messages}, status: 422
         end
       end
-
-      # def create
-      #   user = User.create(user_params)
-    
-      #   if user.valid?
-      #     render json: {user: user, token: create_token(user.id)}
-      #   else
-      #     render json: {errors: user.errors.full_messages}, status: 422
-      #   end
-      # end
     
       def update
         if @user.update(user_params)
@@ -54,7 +42,7 @@ class UsersController < ApplicationController
      
       private
       def user_params
-        params.permit(:id, :first_name, :last_name, :email, :password, :bio, :profile_img, :cover_img, :phone_number, :admin )
+        params.permit(:first_name, :last_name, :email, :password, :bio, :profile_img, :cover_img, :phone_number, :admin )
       end
 
       def set_user

@@ -8,11 +8,13 @@ class UsersController < ApplicationController
       end
     
       def profile
-        render json: current_user, include: [:first_name, :last_name, :email, :phone_number, :admin]
+        # render json: current_user, include: [:first_name, :last_name, :email, :phone_number, :admin]
+        render json: current_user
       end
     
       def show
-        render json: @user, include: [:first_name, :last_name, :email, :phone_number, :admin]
+        # render json: @user, include: [:first_name, :last_name, :email, :phone_number, :admin]
+        render json: current_user
       end
     
       def create

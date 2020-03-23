@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_181116) do
+ActiveRecord::Schema.define(version: 2020_03_23_192412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 2020_03_04_181116) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_clients_on_user_id"
+  end
+
+  create_table "folders", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_folders_on_user_id"
   end
 
   create_table "insta_products", force: :cascade do |t|
@@ -44,6 +52,15 @@ ActiveRecord::Schema.define(version: 2020_03_04_181116) do
     t.index ["user_id"], name: "index_insta_products_on_user_id"
   end
 
+  create_table "notes", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.bigint "folder_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["folder_id"], name: "index_notes_on_folder_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.string "title"
     t.string "specs"
@@ -55,6 +72,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_181116) do
     t.bigint "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "read"
     t.index ["client_id"], name: "index_orders_on_client_id"
   end
 
@@ -95,7 +113,9 @@ ActiveRecord::Schema.define(version: 2020_03_04_181116) do
   end
 
   add_foreign_key "clients", "users"
+  add_foreign_key "folders", "users"
   add_foreign_key "insta_products", "users"
+  add_foreign_key "notes", "folders"
   add_foreign_key "orders", "clients"
   add_foreign_key "posts", "users"
   add_foreign_key "you_videos", "users"

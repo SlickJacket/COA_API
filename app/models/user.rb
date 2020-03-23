@@ -11,6 +11,8 @@ class User < ApplicationRecord
     has_many :insta_products
     has_many :posts
     has_many :you_videos
+    has_many :folders
+    has_many :notes, through: :folders
 
     def downcase_email
         self.email = self.email.delete(' ').downcase
